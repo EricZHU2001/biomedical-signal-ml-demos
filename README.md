@@ -2,7 +2,7 @@
 
 This repository collects sanitized projects and notebook demos that show practical work across biosignal processing, neural decoding, medical imaging, applied machine learning, and web application development.
 
-The materials are adapted from previous research and project workflows. Non-public data, local paths, course framing, and personal identifiers have been removed. The goal is to show the technical workflow rather than publish original private datasets.
+The materials are adapted from previous research and project workflows. Non-public data, local paths, course framing, and personal identifiers have been removed.
 
 ## Recommended Review Order
 
