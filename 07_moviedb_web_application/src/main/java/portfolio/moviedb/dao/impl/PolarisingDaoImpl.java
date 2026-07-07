@@ -1,0 +1,61 @@
+package portfolio.moviedb.dao.impl;
+
+import org.springframework.stereotype.Repository;
+import portfolio.moviedb.dao.interfaces.PolarisingDao;
+import portfolio.moviedb.helper.MySQLHelper;
+import portfolio.moviedb.model.Movie;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+@Repository
+public class PolarisingDaoImpl implements PolarisingDao {
+
+    @Override
+    public List<Movie> getPolarisingMovieList(String limit) {
+        List<Movie> list = new ArrayList<>();
+        try {
+            // Connection to the database...
+            Connection conn = MySQLHelper.getConnection();
+
+            // Writing sql and parameters...
+            String sql = "select movies.movieId, movies.title, movies.genres, movies.year, AVG(rating) as avg_rating\n" +
+                    "from movies left join ratings r on movies.movieId = r.movieId\n" +
+                    "group by movies.movieId\n" +
+                    "order by VARIANCE(rating) desc\n" +
+                    "limit " + limit + ";";
+            // Executing queries...
+            ResultSet rs = MySQLHelper.executingQuery(conn, sql, null);
+            // Reading, analysing and saving the results...
+            while(rs.next()) {
+                Movie movie = new Movie();
+                int movieId = rs.getInt("movieId");
+                String title = rs.getString("title");
+                String genres = rs.getString("genres");
+                double rating = Double.parseDouble(new DecimalFormat("######0.00").format(rs.getDouble("avg_rating")));
+                int year = rs.getInt("year");
+                movie.setMovieId(movieId);
+                movie.setTitle(title);
+                if(!genres.equals("NULL")) movie.setGenres(genres);
+                movie.setYear(year);
+                movie.setRating(rating);
+                list.add(movie);
+            }
+            
+            // Close the connection to release resources...
+            MySQLHelper.closeConnection(conn);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new PolarisingDaoImpl().getPolarisingMovieList("0, 50"));
+    }
+}
