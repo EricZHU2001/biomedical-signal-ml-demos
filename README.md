@@ -2,8 +2,6 @@
 
 This repository collects sanitized projects and notebook demos that show practical work across biosignal processing, neural decoding, medical imaging, applied machine learning, and web application development.
 
-The materials are adapted from previous research and project workflows. Non-public data, local paths, course framing, and personal identifiers have been removed.
-
 ## Recommended Review Order
 
 1. `01_ecog_neural_decoding_pipeline.ipynb`
