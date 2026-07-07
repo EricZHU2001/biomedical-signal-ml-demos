@@ -1,4 +1,4 @@
-# Biomedical AI Technical Portfolio
+# Biomedical Signal and ML Demos
 
 This repository collects sanitized projects and notebook demos that show practical work across biosignal processing, neural decoding, medical imaging, applied machine learning, and web application development.
 
