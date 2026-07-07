@@ -43,9 +43,3 @@ The materials are adapted from previous research and project workflows. Non-publ
 - 3D medical image processing with SimpleITK and PyTorch
 - Practical notebook-based analysis and visualization
 - Java Spring MVC, MySQL-backed data access, JSP/JavaScript UI, and local web deployment
-
-## Notes
-
-These materials are portfolio demonstrations. Some notebook cells use placeholder paths such as `data/...` because the original research or project data is not public.
-
-For a production repository, the strongest next step would be converting the first two ECoG notebooks into a reusable Python package with `src/`, synthetic sample data, tests, and a concise runnable demo.
